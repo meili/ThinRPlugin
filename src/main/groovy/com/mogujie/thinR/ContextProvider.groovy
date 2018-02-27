@@ -18,14 +18,18 @@ class ContextProvider {
     DefaultTask processManifestTask
     String varNameCap
 
-    public ContextProvider(Project project, String varNameCap) {
+    public ContextProvider(Project project, String varNameCap, String buildVariants) {
         this.project = project
         this.varNameCap = varNameCap
         boolean isHighVersion = isHighVersion()
 
         if (isHighVersion) {
             compileTask = project.tasks.findByName("compile${varNameCap}JavaWithJavac")
-            dexTask = project.tasks.findByName("transformClassesWithDexFor${varNameCap}")
+            if(null != buildVariants){
+              dexTask = project.tasks.findByName("transformClassesWithDexFor${buildVariants}")
+            }else {
+              dexTask = project.tasks.findByName("transformClassesWithDexFor${varNameCap}")
+            }
         } else {
             compileTask = project.tasks.findByName("compile${varNameCap}Java")
             dexTask = project.tasks.findByName("dex${varNameCap}")

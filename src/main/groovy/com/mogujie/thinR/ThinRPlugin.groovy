@@ -27,7 +27,8 @@ public class ThinRPlugin implements Plugin<Project> {
             PrintUtil.info(extension.toString())
 
             project.android.applicationVariants.all { variant ->
-                ContextProvider contextProvider = new ContextProvider(project, variant.name.capitalize() as String)
+                ContextProvider contextProvider = new ContextProvider(project, variant.name.capitalize() as String,
+                 extension.buildVariants as String)
                 boolean skipThinR = contextProvider.isSkipThinR(extension)
                 PrintUtil.info("skipThinR: " + skipThinR)
                 if (!skipThinR) {
@@ -119,4 +120,3 @@ public class ThinRPlugin implements Plugin<Project> {
 
 
 }
-
