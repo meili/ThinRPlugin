@@ -5,6 +5,7 @@ public class ThinRExtension {
     public boolean skipThinR = false
     public boolean skipThinRDebug = true
     public int logLevel = 2
+    public String buildVariants = null
 
 
     @Override
@@ -14,6 +15,7 @@ public class ThinRExtension {
                 skipThinR: ${skipThinR}
                 skipThinRDebug: ${skipThinRDebug}
                 logLevel: ${logLevel}
+                buildVariants: ${buildVariants}
                 """
         return str
     }
