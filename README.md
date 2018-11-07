@@ -1,5 +1,5 @@
 ## ThinR gradle plugin
-* Other languages: [简体中文] (README.zh-cn.md) .
+* Other languages: [简体中文](README.zh-cn.md).
 
 
 
