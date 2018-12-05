@@ -45,7 +45,7 @@ class ThinRProcessor {
         ClassReader cr = new ClassReader(bytes)
         ClassWriter cw = new ClassWriter(cr, 0)
         String className = ""
-        ClassVisitor cv = new ClassVisitor(Opcodes.ASM4, cw) {
+        ClassVisitor cv = new ClassVisitor(Opcodes.ASM5, cw) {
             @Override
             void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
                 PrintUtil.verbose("class name => " + name)
@@ -57,7 +57,7 @@ class ThinRProcessor {
                                              String signature, String[] exceptions) {
 
                 MethodVisitor mv = super.visitMethod(access, name, desc, signature, exceptions);
-                mv = new MethodVisitor(Opcodes.ASM4, mv) {
+                mv = new MethodVisitor(Opcodes.ASM5, mv) {
 
                     @Override
                     void visitFieldInsn(int i, String owner, String fieldName, String fdesc) {
@@ -117,7 +117,7 @@ class ThinRProcessor {
         ClassReader cr = new ClassReader(inputStream)
         PrintUtil.info("--------------------- start process file: " + rFile + "  ------------------")
         Map<String, Integer> map = new HashMap<>()
-        ClassVisitor cv = new ClassVisitor(Opcodes.ASM4) {
+        ClassVisitor cv = new ClassVisitor(Opcodes.ASM5) {
 
             @Override
             FieldVisitor visitField(int i, String s, String s1, String s2, Object o) {
